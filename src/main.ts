@@ -1,5 +1,6 @@
-import { NestFactory } from '@nestjs/core';
-import { UserModule } from './infrastructure/user/user.module';
+import "reflect-metadata";
+import { NestFactory } from "@nestjs/core";
+import { UserModule } from "./infrastructure/user/user.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(UserModule);
