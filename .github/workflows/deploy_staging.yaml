@@ -4,7 +4,7 @@ on:
     branches: ['*']
 
 jobs:
-  test:
+  executar_testes:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,15 +22,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # - name: Run lint
-      #   run: npm run lint
-
       - name: Run coverage
-        run: jest --coverage
+        run: npm run test:cov
       
       - name: Run unit tests
         run: npm run test
 
       - name: Run e2e tests
-        run: jest --config ./test/jest-e2e.json
-
+        run: npm run test:e2e
