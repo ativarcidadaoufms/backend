@@ -50,18 +50,3 @@ jobs:
 
       - name: Run lint
         run: npm run lint
-  deploy_railway:
-    runs-on: ubuntu-latest
-    needs: [executar_testes, executar_lint]
-    steps:
-      - name: Copy repository
-        uses: actions/checkout@v3
-
-      - name: Install Railway CLI
-        run: npm install -g railway
-
-      - name: Login to Railway
-        run: railway login -u ${{ secrets.RAILWAY_USER }} -p ${{ secrets.RAILWAY_PASSWORD }}
-
-      - name: Deploy to Railway
-        run: railway up
