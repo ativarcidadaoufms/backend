@@ -11,26 +11,26 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - name: Copy repository
+      - name: Clonar o repositório
         uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Utilizar Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install dependencies
+      - name: Instalar dependências
         run: npm install
 
       # - name: Run lint
       #   run: npm run lint
 
-      - name: Run coverage
+      - name: Executar testes de cobertura
         run: jest --coverage
       
-      - name: Run unit tests
+      - name: Executar testes unitários
         run: npm run test
 
-      - name: Run e2e tests
+      - name: Executar testes E2E (Integração)
         run: jest --config ./test/jest-e2e.json
 
